@@ -18,4 +18,4 @@ COPY . /app/
 EXPOSE 8000
 
 # 실행 명령 (마이그레이션 후 서버 실행)
-CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 community.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 danny_community.wsgi:application"]
