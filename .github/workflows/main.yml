@@ -17,8 +17,8 @@ jobs:
     - name: Log in to GitHub Container Registry
       run: echo "${{ secrets.USER_TOKEN }}" | docker login ghcr.io -u happy-yeachan --password-stdin
 
-    - name: Build Docker Image
-      run: docker build -t ghcr.io/happy-yeachan/django-app:latest .
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
-    - name: Push Docker Image
-      run: docker push ghcr.io/happy-yeachan/django-app:latest
+    - name: Build & Push Docker Image
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/happy-yeachan/django-app:latest --push .
