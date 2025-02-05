@@ -284,4 +284,6 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,django
 
-.env
+# Django 마이그레이션 파일 제외
+*/migrations/*
+!*/migrations/__init__.py
