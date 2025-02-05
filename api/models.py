@@ -26,3 +26,16 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    comment_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # 외래키
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)  # 외래키
+    content = models.TextField()
+    like_cnt = models.IntegerField(default=0)
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.user.nickname} - {self.content[:20]}"
